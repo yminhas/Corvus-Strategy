@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Corvus Strategy for business solutions and schedule a consultation.">
+    <title>Contact Us - Corvus Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/8LBzq3G.png" type="image/png">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #A62323; --secondary-color: #D3D3D3; --text-color: #1A2526; --background-color: #FFFFFF; --header-bg: #1A2526; --header-text: #FFFFFF; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-color); background: var(--background-color); line-height: 1.6; overflow-x: hidden; opacity: 0; animation: fadeIn 0.5s ease forwards; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #821b1b; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--header-bg); color: var(--header-text); padding: 0.5rem 1rem; z-index: 100; }
+        .skip-link:focus { top: 0; }
+        header { background: var(--header-bg); color: var(--header-text); padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
+        .logo img { height: 60px; width: auto; }
+        nav ul { list-style: none; display: flex; align-items: center; }
+        nav ul li { margin-left: 2.5rem; }
+        nav ul li a { color: var(--header-text); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary-color); }
+        nav ul li a.active { color: var(--primary-color); }
+        .hamburger { display: none; font-size: 1.8rem; color: var(--header-text); cursor: pointer; }
+        section { padding: 3rem 3rem; max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 3rem; color: var(--primary-color); margin-bottom: 2rem; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+        form { display: flex; flex-direction: column; max-width: 600px; margin: 0 auto; }
+        label { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        input, textarea { padding: 1rem; margin-bottom: 1.5rem; border: 1px solid var(--secondary-color); border-radius: 5px; font-size: 1rem; }
+        button { background: var(--primary-color); color: var(--header-text); padding: 1rem; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
+        button:hover { background: #821b1b; }
+        .contact-info { margin-top: 2rem; text-align: center; }
+        .calendly-inline-widget { min-width: 320px; height: 700px; margin: 2rem auto; }
+        footer { background: var(--header-bg); color: var(--header-text); padding: 4rem 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center; }
+        footer h3 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+        .social-links a { color: var(--header-text); margin: 0 1rem; font-size: 1.8rem; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--primary-color); }
+        .newsletter form { display: flex; justify-content: center; gap: 0.75rem; max-width: 400px; margin: 0 auto; }
+        .newsletter input { padding: 0.9rem; border: none; border-radius: 5px; width: 70%; }
+        .newsletter button { background: var(--primary-color); color: var(--header-text); padding: 0.9rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; }
+        .newsletter button:hover { background: #821b1b; }
+        .quick-links a { display: block; color: var(--header-text); margin: 0.75rem 0; transition: color 0.3s ease; }
+        .quick-links a:hover { color: var(--primary-color); }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: var(--header-text); padding: 1rem; border-radius: 50%; cursor: pointer; display: none; transition: background 0.3s ease; }
+        .back-to-top:hover { background: #821b1b; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) {
+            header { padding: 1rem 2rem; }
+            .hamburger { display: block; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--header-bg); padding: 1.5rem 0; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 1.5rem 0; }
+            section { padding: 2rem 2rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/8LBzq3G.png" alt="Corvus Strategy Logo">
+        </div>
+        <div class="hamburger" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section>
+            <h1>Contact Us</h1>
+            <p>We’re here to help you transform your business. Reach out today!</p>
+            <form action="https://formspree.io/f/mjkryyrr" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:info@corvusstrategy.com">info@corvusstrategy.com</a></p>
+                <p>Phone: <a href="tel:+6472684123">(647) 268-4123</a></p>
+            </div>
+        </section>
+        <section>
+            <h2>Schedule a Consultation</h2>
+            <p>Book a meeting with us to discuss your business needs and how Corvus Strategy can help you succeed.</p>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/yashin-minhas/30min?primaryColor=a62323&textColor=1a2526&backgroundColor=ffffff" style="min-width: 320px; height: 700px;"></div>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@corvusstrategy.com">info@corvusstrategy.com</a></p>
+            <p>Phone: <a href="tel:+6472684123">(647) 268-4123</a></p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/16vctEAHWK/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/corvusstrategy?s=21&t=9KVjHh3qtojaNHJDqrGdYQ" target="_blank" aria-label="X"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/x.png" alt="X logo" style="width: 28px; height: 28px;"></a>
+                <a href="https://www.linkedin.com/company/corvusstrategy/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/corvusstrategy?igsh=NHR3Y2M3NDlicHQ%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <form action="https://formspree.io/f/mqabqnek" method="POST">
+                <input type="email" name="email" placeholder="Your email" required aria-label="Email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+    <div class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑</div>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 400) backToTop.style.display = 'block';
+            else backToTop.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

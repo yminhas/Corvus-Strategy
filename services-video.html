@@ -1,0 +1,185 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Captivate your audience with Corvus Strategy’s video services: production, editing, animation, and marketing integration.">
+    <title>Video Services - Corvus Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/8LBzq3G.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #A62323; --secondary-color: #D3D3D3; --text-color: #1A2526; --background-color: #FFFFFF; --header-bg: #1A2526; --header-text: #FFFFFF; }
+        body { font-family: 'Open Sans', sans-serif; color: var(--text-color); background: var(--background-color); line-height: 1.6; overflow-x: hidden; opacity: 0; animation: fadeIn 0.5s ease forwards; }
+        h1, h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #821b1b; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--header-bg); color: var(--header-text); padding: 0.5rem 1rem; z-index: 100; }
+        .skip-link:focus { top: 0; }
+        header { background: var(--header-bg); color: var(--header-text); padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
+        .logo img { height: 60px; width: auto; }
+        nav ul { list-style: none; display: flex; align-items: center; }
+        nav ul li { margin-left: 2.5rem; }
+        nav ul li a { color: var(--header-text); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary-color); }
+        nav ul li a.active { color: var(--primary-color); }
+        .hamburger { display: none; font-size: 1.8rem; color: var(--header-text); cursor: pointer; }
+        section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+        h1 { font-size: 3rem; color: var(--primary-color); margin-bottom: 2rem; }
+        h2 { font-size: 2rem; margin: 2rem 0 1rem; }
+        p { margin-bottom: 1.5rem; }
+        .cta-button { background: var(--primary-color); color: var(--header-text); padding: 1rem 2.5rem; border-radius: 5px; font-weight: 600; display: inline-block; transition: background 0.3s ease, transform 0.3s ease; }
+        .cta-button:hover { background: #821b1b; transform: scale(1.05); }
+        footer { background: var(--header-bg); color: var(--header-text); padding: 4rem 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center; }
+        footer h3 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+        .social-links a { color: var(--header-text); margin: 0 1rem; font-size: 1.8rem; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--primary-color); }
+        .newsletter form { display: flex; justify-content: center; gap: 0.75rem; max-width: 400px; margin: 0 auto; }
+        .newsletter input { padding: 0.9rem; border: none; border-radius: 5px; width: 70%; }
+        .newsletter button { background: var(--primary-color); color: var(--header-text); padding: 0.9rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; }
+        .newsletter button:hover { background: #821b1b; }
+        .quick-links a { display: block; color: var(--header-text); margin: 0.75rem 0; transition: color 0.3s ease; }
+        .quick-links a:hover { color: var(--primary-color); }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-color); color: var(--header-text); padding: 1rem; border-radius: 50%; cursor: pointer; display: none; transition: background 0.3s ease; }
+        .back-to-top:hover { background: #821b1b; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @media (max-width: 768px) {
+            header { padding: 1rem 2rem; }
+            .hamburger { display: block; }
+            nav ul { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--header-bg); padding: 1.5rem 0; }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 1.5rem 0; }
+            section { padding: 4rem 2rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/8LBzq3G.png" alt="Corvus Strategy Logo">
+        </div>
+        <div class="hamburger" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section>
+            <h1>Video Services</h1>
+            <p>Bring your brand to life with Corvus Strategy’s world-class video services. We create captivating content that engages, inspires, and converts your audience, delivering results that elevate your business.</p>
+            
+            <h2>Video Production</h2>
+            <p>From script to screen, we manage every step of the production process. Our team combines creative storytelling with top-tier equipment to deliver videos that shine, whether it’s a promotional piece, corporate overview, or product demo.</p>
+            
+            <h2>Video Editing</h2>
+            <p>Our skilled editors transform raw footage into polished masterpieces. With precise cuts, seamless transitions, and professional effects, we craft narratives that hold attention and leave a lasting impression.</p>
+            
+            <h2>Animation</h2>
+            <p>Make complex ideas simple and engaging with our custom animations. From 2D explainer videos to 3D motion graphics, we design visuals that captivate and communicate your message with clarity and flair.</p>
+            
+            <h2>Video Marketing</h2>
+            <p>We don’t just create videos, we make them work for you. By optimizing content for platforms like YouTube, Instagram, and TikTok, we integrate video into your marketing strategy to amplify reach and drive engagement.</p>
+            
+            <a href="contact.html" class="cta-button">Contact Us for Video Solutions</a>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@corvusstrategy.com">info@corvusstrategy.com</a></p>
+            <p>Phone: <a href="tel:+6472684123">(647) 268-4123</a></p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/16vctEAHWK/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/corvusstrategy?s=21&t=9KVjHh3qtojaNHJDqrGdYQ" target="_blank" aria-label="X"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/x.png" alt="X logo" style="width: 28px; height: 28px;"></a>
+                <a href="https://www.linkedin.com/company/corvusstrategy/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/corvusstrategy?igsh=NHR3Y2M3NDlicHQ%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <form action="https://formspree.io/f/mqabqnek" method="POST">
+                <input type="email" name="email" placeholder="Your email" required aria-label="Email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+    <div class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑</div>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 400) backToTop.style.display = 'block';
+            else backToTop.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

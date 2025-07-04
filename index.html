@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corvus Strategy - Premier business solutions in design, marketing, development, and consulting. Elevate your success today.">
+    <meta name="keywords" content="business strategy, design, marketing, development, consulting, professional services, Corvus Strategy">
+    <meta property="og:title" content="Corvus Strategy - Elite Business Solutions">
+    <meta property="og:description" content="Transform your business with expert design, marketing, and consulting services.">
+    <meta property="og:image" content="https://corvusstrategy.com/images/og-image.jpg">
+    <meta property="og:url" content="https://corvusstrategy.com">
+    <title>Corvus Strategy - Elite Business Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/8LBzq3G.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #A62323;
+            --secondary-color: #D3D3D3;
+            --text-color: #1A2526;
+            --background-color: #FFFFFF;
+            --header-bg: #1A2526;
+            --header-text: #FFFFFF;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            background: var(--background-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #821b1b;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.5rem 1rem;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 2.5rem;
+        }
+        nav ul li a {
+            color: var(--header-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--header-text);
+            cursor: pointer;
+        }
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--header-text);
+            animation: slideIn 1s ease;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 37, 38, 0.7);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+            animation: fadeInUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.7s forwards;
+            opacity: 0;
+        }
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--header-text);
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            margin: 0 1rem;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #821b1b;
+            transform: scale(1.05);
+        }
+        .intro {
+            padding: 6rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 3rem;
+            animation: fadeInUp 1s ease;
+        }
+        .intro-text {
+            flex: 1;
+        }
+        .intro-text h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .intro-image img {
+            flex: 1;
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .intro-image img:hover {
+            transform: scale(1.03);
+        }
+        .services {
+            padding: 6rem 3rem;
+            background: #f9f9f9;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+        .services h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 3.5rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--background-color);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .how-we-work {
+            padding: 6rem 3rem;
+            text-align: center;
+            background: var(--background-color);
+            animation: fadeIn 1s ease;
+        }
+        .how-we-work h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 3.5rem;
+        }
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .step {
+            flex: 1 1 220px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        .step i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        .step h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+        .faq {
+            padding: 6rem 3rem;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .faq h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 3.5rem;
+        }
+        .faq-item {
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-align: left;
+        }
+        .faq-question {
+            background: var(--background-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .faq-question h3 {
+            font-size: 1.4rem;
+        }
+        .faq-answer {
+            display: none;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .blog-preview {
+            padding: 6rem 3rem;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .blog-preview h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 3.5rem;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .blog-card {
+            background: var(--background-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-card h3 {
+            font-size: 1.6rem;
+            padding: 1.5rem;
+        }
+        .blog-card p {
+            padding: 0 1.5rem 1.5rem;
+        }
+        .cta-section {
+            padding: 5rem 3rem;
+            background: linear-gradient(135deg, var(--primary-color), #821b1b);
+            color: var(--header-text);
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+        }
+        footer {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        footer h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+        .social-links a {
+            color: var(--header-text);
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .newsletter input {
+            padding: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            width: 70%;
+        }
+        .newsletter button {
+            background: var(--primary-color);
+            color: var(--header-text);
+            padding: 0.9rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .newsletter button:hover {
+            background: #821b1b;
+        }
+        .quick-links a {
+            display: block;
+            color: var(--header-text);
+            margin: 0.75rem 0;
+            transition: color 0.3s ease;
+        }
+        .quick-links a:hover {
+            color: var(--primary-color);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: var(--header-text);
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s ease;
+        }
+        .back-to-top:hover {
+            background: #821b1b;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 2rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--header-bg);
+                padding: 1.5rem 0;
+                animation: slideIn 0.3s ease;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.3rem;
+            }
+            .intro {
+                flex-direction: column;
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/8LBzq3G.png" alt="Corvus Strategy Logo">
+        </div>
+        <div class="hamburger" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id "main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Unleash Your Business Potential</h1>
+                <p>Strategic solutions in design, marketing, development, and consulting - crafted for your success.</p>
+                <a href="services.html" class="cta-button">Explore Services</a>
+                <a href="contact.html" class="cta-button">Contact Us</a>
+            </div>
+        </section>
+        <section class="intro">
+            <div class="intro-text">
+                <h2>About Corvus Strategy</h2>
+                <p>We empower businesses with innovative, tailored solutions across design, marketing, data, development, and consulting. Our mission is to drive your growth with precision and creativity, delivering measurable results in a competitive landscape.</p>
+            </div>
+            <div class="intro-image">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Team collaborating at Corvus Strategy" loading="lazy">
+            </div>
+        </section>
+        <section class="services">
+            <h2>Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-drafting-compass"></i>
+                    <h3>Design Services</h3>
+                    <p>Advanced system, product, and graphic design.</p>
+                    <a href="services-design.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing Services</h3>
+                    <p>Elevate your brand with SEO, social media, and digital campaigns.</p>
+                    <a href="services-marketing.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Services</h3>
+                    <p>Streamline operations with data cleaning and visualization.</p>
+                    <a href="services-data.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Video Services</h3>
+                    <p>Captivate audiences with video editing and creation.</p>
+                    <a href="services-video.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Development Services</h3>
+                    <p>Custom web and software solutions for peak performance.</p>
+                    <a href="services-development.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Planning & Coordination</h3>
+                    <p>Flawless project and event Execution.</p>
+                    <a href="services-planning.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Consulting & Education</h3>
+                    <p>Expert guidance through consulting and training.</p>
+                    <a href="services-consulting.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+        <section class="how-we-work">
+            <h2>How We Work</h2>
+            <div class="steps">
+                <div class="step">
+                    <i class="fas fa-comments"></i>
+                    <h3>Consultation</h3>
+                    <p>We understand your unique needs and goals.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Strategy</h3>
+                    <p>We design a custom roadmap for success.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-tools"></i>
+                    <h3>Execution</h3>
+                    <p>We deliver with precision and skill.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Results</h3>
+                    <p>We achieve impactful, measurable outcomes.</p>
+                </div>
+            </div>
+        </section>
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>What services do you offer?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We provide comprehensive solutions in design, marketing, data, video, development, planning, and consulting—tailored to your business needs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>How do I get started?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Contact us via our form or email, and we’ll schedule a consultation to discuss your goals. You can also schedule your own meeting with us using the consultation scheduler on the contact page.</p>
+                </div>
+            </div>
+        </section>
+        <section class="blog-preview">
+            <h2>Latest Insights</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0" alt="Blog post 1" loading="lazy">
+                    <h3>Top Marketing Trends for 2025</h3>
+                    <p>Discover the strategies shaping the future of digital marketing.</p>
+                    <a href="blog-marketing-trends.html" class="cta-button">Read More</a>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3" alt="Blog post 2" loading="lazy">
+                    <h3>Leveraging Data for Growth</h3>
+                    <p>Learn how data can transform your business decisions.</p>
+                    <a href="blog-data-growth.html" class="cta-button">Read More</a>
+                </div>
+            </div>
+        </section>
+        <section class="cta-section">
+            <h2>Ready to Transform Your Business?</h2>
+            <a href="contact.html" class="cta-button">Get Started Now</a>
+        </section>
+    </main>
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@corvusstrategy.com">info@corvusstrategy.com</a></p>
+            <p>Phone: <a href="tel:+6472684123">(647) 268-4123</a></p>
+        </div>
+        <div>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/16vctEAHWK/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/corvusstrategy?s=21&t=9KVjHh3qtojaNHJDqrGdYQ" target="_blank" aria-label="X"><img src="https://img.icons8.com/ios-filled/50/FFFFFF/x.png" alt="X logo" style="width: 28px; height: 28px;"></a>
+                <a href="https://www.linkedin.com/company/corvusstrategy/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/corvusstrategy?igsh=NHR3Y2M3NDlicHQ%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <form action="https://formspree.io/f/mqabqnek" method="POST">
+                <input type="email" name="email" placeholder="Your email" required aria-label="Email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
+    <div class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑</div>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 400) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('active');
+            const icon = element.querySelector('i');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
+</body>
+</html>
